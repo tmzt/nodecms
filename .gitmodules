@@ -1,0 +1,3 @@
+[submodule "lib/sammy"]
+	path = lib/sammy
+	url = git://github.com/quirkey/sammy.git
