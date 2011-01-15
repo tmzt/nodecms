@@ -9,5 +9,18 @@
 			this.partial('/ajax/'+this.params['p1']);
 		});
 	});
-	$(function() { app.run('#/'); });
+	$(function() {
+        $('a').live('click',function(e) {
+            var loc = $(this).attr('href');
+            if (loc.match(/\/\//)) {
+            } else {
+		e.preventDefault();
+                loc = loc.replace(/^\//, '#/');
+                alert('nodecms url loc: ' + loc);
+		window.location.href = loc;
+		return false;
+            }
+        });
+        app.run('#/');
+    });
 })(jQuery);
