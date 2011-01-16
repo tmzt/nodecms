@@ -29,6 +29,19 @@ app.configure('production', function() {
   app.use(express.errorHandler()); 
 });
 
+app.post('/session/login', function(req, res) {
+	req.session.uid = 1;
+	var json = {uid: req.session.uid};
+	res.writeHead(200, {'Content-Type': 'application/json'});
+	res.end(JSON.stringify(json));
+});
+app.post('/session/logout', function(req, res) {
+	req.session.uid = -1;
+	var json = {uid: req.session.uid};
+	res.writeHead(200, {'Content-Type': 'application/json'});
+	res.end(JSON.stringify(json));
+});
+
 app.get('/ajax/:p1/:p2', function(req, res) {
 	var user = {uid: (req.session.uid != null) ? req.session.uid : -1};
 	var options = {locals: {user: user}, layout: null};

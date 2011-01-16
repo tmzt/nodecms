@@ -8,7 +8,19 @@ html
 		script(src="/lib/nodecms/lib/client.js", type="text/javascript")
 	body
 		#heading Nodecms
+		#logo
+			ul
+				li
+					a(href="/") Home
 		#session
+			- if (user != null && user.uid != null && user.uid != -1)
+				ul
+					li
+						a(class="action logout", href="/session/logout") Logout
+			- else
+				ul
+					li
+						a(class="action login", href="/session/login") Login
 		#nav
 			ul
 				li
